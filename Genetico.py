@@ -127,7 +127,6 @@ class Genetico:
             self.grafico.plot(med_fitness, label='Promedio fitness')
             self.grafico.legend(['Fitness del individuo más apto', 'Fitness promedio'], loc='upper right')
             self.graficocanvas.draw()
-            print(i)
 
             if i % self.ratio_imagenes == 0:
 
@@ -199,13 +198,11 @@ class Genetico:
         indices = np.random.choice(len(poblacion), cant_seleccionados)
         random_subset = [poblacion[i] for i in indices]
 
-        seleccionado = None
+        seleccionado = random_subset[0]
 
         # busca el individuo con el mejor fit
         for i in random_subset:
-            if (seleccionado == None):
-                seleccionado = i
-            elif i.fitness < seleccionado.fitness:
+            if i.fitness < seleccionado.fitness:
                 seleccionado = i
 
         return seleccionado
